@@ -17,12 +17,11 @@ The system will integrate with existing VoIP.ms credentials to provide seamless 
 1. WHEN the user enters their VoIP.ms credentials during initial setup THEN the system SHALL authenticate, securely store the credentials, and establish a VoIP connection
 2. WHEN the user returns to the application THEN the system SHALL automatically authenticate using stored credentials without requiring re-entry
 3. WHEN the user initiates a call to a phone number THEN the system SHALL place the call using the VoIP.ms service with stored authentication
-4. WHEN a call is active THEN the system SHALL provide an in-call keypad for DTMF tone input
-5. WHEN a call is in progress THEN the system SHALL display call duration and connection status
-6. WHEN the user ends a call THEN the system SHALL properly terminate the VoIP connection
-7. WHEN the user needs to update credentials THEN the system SHALL provide a settings option to modify or re-enter VoIP.ms authentication information
-8. WHEN stored credentials become invalid THEN the system SHALL prompt for credential update and maintain secure re-authentication flow
-9. IF the VoIP connection fails THEN the system SHALL display appropriate error messages and retry options
+4. WHEN a call is in progress THEN the system SHALL display call duration and connection status
+5. WHEN the user ends a call THEN the system SHALL properly terminate the VoIP connection
+6. WHEN the user needs to update credentials THEN the system SHALL provide a settings option to modify or re-enter VoIP.ms authentication information
+7. WHEN stored credentials become invalid THEN the system SHALL prompt for credential update and maintain secure re-authentication flow
+8. IF the VoIP connection fails THEN the system SHALL display appropriate error messages and retry options
 
 ### Requirement 2: Contact Management System
 
@@ -34,8 +33,10 @@ The system will integrate with existing VoIP.ms credentials to provide seamless 
 2. WHEN importing contacts THEN the system SHALL support multiple phone numbers per contact
 3. WHEN viewing contacts THEN the system SHALL display all contact information in an organized list format
 4. WHEN the user clicks on a phone number THEN the system SHALL initiate a VoIP call to that number
-5. WHEN a call is completed THEN the system SHALL allow the user to mark the phone number as valid or invalid
-6. WHEN contacts are displayed THEN the system SHALL show the validity status of each phone number
+5. WHEN phone numbers are displayed THEN the system SHALL render them as distinct clickable buttons or call-to-action elements with clear visual differentiation from plain text to prevent accidental calls
+6. WHEN a call is completed THEN the system SHALL allow the user to mark the phone number as valid or invalid
+7. WHEN contacts are displayed THEN the system SHALL show the validity status of each phone number
+8. WHEN contacts have been successfully uploaded THEN the system SHALL provide bulk selection functionality allowing users to select multiple contacts and create call tasks for each selected contact
 
 ### Requirement 3: Task and Call Management
 
@@ -62,7 +63,6 @@ The system will integrate with existing VoIP.ms credentials to provide seamless 
 4. WHEN grouping contacts THEN the system SHALL allow filtering by timezone for batch calling
 5. WHEN displaying contact groups THEN the system SHALL show current local time for each timezone
 6. WHEN planning calls THEN the system SHALL highlight optimal calling windows (e.g., 9am-2pm local time)
-7. WHEN sorting contacts THEN the system SHALL replicate the Pipedrive workflow of organizing by phone number patterns
 
 ### Requirement 5: Data Import and Export Capabilities
 
@@ -75,7 +75,9 @@ The system will integrate with existing VoIP.ms credentials to provide seamless 
 3. WHEN data validation fails THEN the system SHALL provide detailed error reports with line-by-line feedback
 4. WHEN importing is successful THEN the system SHALL provide a summary of imported contacts and detected duplicates
 5. WHEN the user requests data export THEN the system SHALL generate CSV files with current contact data and call history
-6. WHEN exporting data THEN the system SHALL include call notes, task status, and phone number validity markers
+6. WHEN importing contacts with duplicate email addresses THEN the system SHALL group phone numbers under the same contact record, and IF name or company information differs THEN the system SHALL prompt the user to resolve conflicts by either editing the data or selecting one version to keep
+7. WHEN exporting data THEN the system SHALL include call notes, task status, and phone number validity markers
+8. WHEN exporting data THEN the system SHALL include all originally imported fields (name, phone numbers with validity markers, email, company, imported notes) plus enhanced data (call notes, task status, call history)
 
 ### Requirement 6: Real-Time Call Status and History Tracking
 
@@ -84,11 +86,13 @@ The system will integrate with existing VoIP.ms credentials to provide seamless 
 #### Acceptance Criteria
 
 1. WHEN a call is initiated THEN the system SHALL display real-time call status (connecting, ringing, connected, ended)
-2. WHEN calls are made THEN the system SHALL automatically log call details (date, time, duration, outcome)
-3. WHEN viewing call history THEN the system SHALL provide filtering options by date range, contact, and call outcome
-4. WHEN call history is accessed THEN the system SHALL show statistics including total calls, success rate, and average duration
-5. WHEN multiple calls are made to the same number THEN the system SHALL track call frequency and intervals
-6. WHEN reviewing contact activity THEN the system SHALL display a timeline of all interactions and tasks
+2. WHEN displaying call status THEN the system SHALL present a dialpad-like interface similar to mobile phone applications with visual indicators for call states (animated connecting, ringing tone indication, connected timer, and clear end call button)
+3. WHEN calls are made THEN the system SHALL automatically log call details (date, time, duration, outcome)
+4. WHEN viewing call history THEN the system SHALL provide filtering options by date range, contact, and call outcome
+5. WHEN call history is accessed THEN the system SHALL show statistics including total calls, success rate, and average duration
+6. WHEN multiple calls are made to the same number THEN the system SHALL track call frequency and intervals
+7. WHEN reviewing contact activity THEN the system SHALL display a timeline of all interactions and tasks
+8. WHEN a call is completed THEN the system SHALL immediately present a modal dialog prompting the user to log call outcome and enter call notes before allowing navigation to the next call or task
 
 ### Requirement 7: User Interface and Experience Optimization
 
